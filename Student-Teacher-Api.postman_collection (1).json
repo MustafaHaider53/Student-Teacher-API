@@ -1,0 +1,725 @@
+{
+	"info": {
+		"_postman_id": "4d99d529-e526-48a4-b889-f56979a22223",
+		"name": "Student-Teacher-Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40640526"
+	},
+	"item": [
+		{
+			"name": "Register as Teacher",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Hasseb",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "hasseb53@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "haseeb@123",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "teacher",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"register",
+						""
+					]
+				},
+				"description": "end point will create you a teacher  \n  \n\ncurl --location 'http://127.0.0.1:8000/register/' \\\\--form 'name=\"Hasseb\"' \\\\--form 'email=\"hasseb53@gmail.com\"' \\\\--form 'password=\"haseeb@123\"' \\\\--form 'role=\"teacher\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "Teacher Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "hasseb53@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "haseeb@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"login",
+						""
+					]
+				},
+				"description": "endpoint will log you in as teacher\n\ncurl --location '[http://127.0.0.1:8000/login/'](http://127.0.0.1:8000/login/')  \n\\--form 'email=\"[hasseb53@gmail.com](https://mailto:hasseb53@gmail.com)\"'  \n\\--form 'password=\"haseeb@123\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "Registration Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Mustafa",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "mustafa53@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mustafa@123",
+							"type": "text"
+						},
+						{
+							"key": "role",
+							"value": "student",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"register",
+						""
+					]
+				},
+				"description": "\\*_this is register end point it will create you a student__\\*_\n\ncurl --location '[http://127.0.0.1:8000/register/'](http://127.0.0.1:8000/register/') \\\\--form 'name=\"Mustafa\"' \\\\--form 'email=\"[mustafa53@gmail.com](https://mailto:mustafa53@gmail.com)\"' \\\\--form 'password=\"mustafa@123\"' \\\\--form 'role=\"student\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "Student Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "mustafa53@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mustafa@123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"login",
+						""
+					]
+				},
+				"description": "\\*_end point will log you in the user you just register__\\*_\n\ncurl --location 'http://127.0.0.1:8000/login/' \\\\--form 'email=\"mustafa53@gmail.com\"' \\\\--form 'password=\"mustafa@123\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "Profile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzAxMDg2LCJpYXQiOjE3NTQyOTk4ODYsImp0aSI6ImZmNDg4Njk3YzVjMTQ3M2U5MTUyZWJkMWQwZjQyNzQyIiwidXNlcl9pZCI6IjQifQ.uQfknkEXOC2VOBUae0N5E4_fwwaZ44folVFFVHcRqXc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/profile/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"profile",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Assingment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMwNjE1LCJpYXQiOjE3NTQzMjk0MTUsImp0aSI6IjhmNTZlZGU5OGJjODRkYTZhZTVmMjFiYzY1NWM1NGFkIiwidXNlcl9pZCI6IjIifQ.FJjKuDtfg9DpZGA17na1HALnekX1NjKZtwpqx4ddsyY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Patition",
+							"type": "text"
+						},
+						{
+							"key": "illustration",
+							"value": "When Partition Happen",
+							"type": "text"
+						},
+						{
+							"key": "assigned_to",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/assingmentapi/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"assingmentapi",
+						""
+					]
+				},
+				"description": "**end point will create you a assingment just login as teacher\n\ncurl --location '[http://127.0.0.1:8000/assingmentapi/'](http://127.0.0.1:8000/assingmentapi/')  \n\\--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMwNjE1LCJpYXQiOjE3NTQzMjk0MTUsImp0aSI6IjhmNTZlZGU5OGJjODRkYTZhZTVmMjFiYzY1NWM1NGFkIiwidXNlcl9pZCI6IjIifQ.FJjKuDtfg9DpZGA17na1HALnekX1NjKZtwpqx4ddsyY'  \n\\--form 'title=\"Patition\"'  \n\\--form 'illustration=\"When Partition Happen\"'  \n\\--form 'assigned_to=\"1\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "List-Assingment",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/list-assingment/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"list-assingment",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Assingment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMyMzcwLCJpYXQiOjE3NTQzMzExNzAsImp0aSI6Ijc2MWYwOTk4OGRhZDQyMTU4NWZjYzA5ZGM0OTcyYzk4IiwidXNlcl9pZCI6IjIifQ.dkCRubI5Np5S_U4_jy_WSSdlD6I98omwpGFp1XlB7FU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Partition",
+							"type": "text"
+						},
+						{
+							"key": "illustration",
+							"value": "When Partition Happen and what was the reason",
+							"type": "text"
+						},
+						{
+							"key": "assigned_to",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/assingmentapi/4/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"assingmentapi",
+						"4",
+						""
+					]
+				},
+				"description": "endpoint will update the created assingment illustration just login as teacher  \n  \n\ncurl --location --request PUT '[http://127.0.0.1:8000/assingmentapi/4/'](http://127.0.0.1:8000/assingmentapi/4/')  \n\\--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMyMzcwLCJpYXQiOjE3NTQzMzExNzAsImp0aSI6Ijc2MWYwOTk4OGRhZDQyMTU4NWZjYzA5ZGM0OTcyYzk4IiwidXNlcl9pZCI6IjIifQ.dkCRubI5Np5S_U4_jy_WSSdlD6I98omwpGFp1XlB7FU'  \n\\--form 'title=\"Partition\"'  \n\\--form 'illustration=\"When Partition Happen and what was the reason\"'  \n\\--form 'assigned_to=\"1\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Assingment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMyMzcwLCJpYXQiOjE3NTQzMzExNzAsImp0aSI6Ijc2MWYwOTk4OGRhZDQyMTU4NWZjYzA5ZGM0OTcyYzk4IiwidXNlcl9pZCI6IjIifQ.dkCRubI5Np5S_U4_jy_WSSdlD6I98omwpGFp1XlB7FU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/assingmentapi/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"assingmentapi",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Submission",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzAzMTYxLCJpYXQiOjE3NTQzMDE5NjEsImp0aSI6IjEzYjFmYzkzNjM5OTQ2M2Q5YWQyYzA2NzdjM2JkMWQ1IiwidXNlcl9pZCI6IjQifQ.x5Mvtu8Dlb6SJdmiUNU35CYbkdfKvdRMV8sQRuYXyIY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "assingment",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "solution",
+							"value": "in 1947",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/submissionapi/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"submissionapi",
+						""
+					]
+				},
+				"description": "endpoint will create you a submission\n\ncurl --location '[http://127.0.0.1:8000/submissionapi/'](http://127.0.0.1:8000/submissionapi/')  \n\\--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzAzMTYxLCJpYXQiOjE3NTQzMDE5NjEsImp0aSI6IjEzYjFmYzkzNjM5OTQ2M2Q5YWQyYzA2NzdjM2JkMWQ1IiwidXNlcl9pZCI6IjQifQ.x5Mvtu8Dlb6SJdmiUNU35CYbkdfKvdRMV8sQRuYXyIY'  \n\\--form 'assingment=\"1\"'  \n\\--form 'solution=\"in 1947\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "List-Submission",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/list-submission/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"list-submission",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Submission",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMzMzA0LCJpYXQiOjE3NTQzMzIxMDQsImp0aSI6IjUyNDU3OGZhZjk5YTQzMTA5ODdjMjRiOTEzOTg5ZmNjIiwidXNlcl9pZCI6IjQifQ.tb2tQNTGn1fkgHzhh9XJf1j5l3xVoet8GQHoCRHGD-k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "solution",
+							"value": "In 1947 and due to Hindu Muslim Conflict",
+							"type": "text"
+						},
+						{
+							"key": "assingment",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/submissionapi/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"submissionapi",
+						"2",
+						""
+					]
+				},
+				"description": "endpoint will update the created submssion solution  \njust logged in as student  \n  \ncurl --location --request PUT '[http://127.0.0.1:8000/submissionapi/2/'](http://127.0.0.1:8000/submissionapi/2/')  \n\\--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMzMzA0LCJpYXQiOjE3NTQzMzIxMDQsImp0aSI6IjUyNDU3OGZhZjk5YTQzMTA5ODdjMjRiOTEzOTg5ZmNjIiwidXNlcl9pZCI6IjQifQ.tb2tQNTGn1fkgHzhh9XJf1j5l3xVoet8GQHoCRHGD-k'  \n\\--form 'solution=\"In 1947 and due to Hindu Muslim Conflict\"'  \n\\--form 'assingment=\"1\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Submission",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMzMzA0LCJpYXQiOjE3NTQzMzIxMDQsImp0aSI6IjUyNDU3OGZhZjk5YTQzMTA5ODdjMjRiOTEzOTg5ZmNjIiwidXNlcl9pZCI6IjQifQ.tb2tQNTGn1fkgHzhh9XJf1j5l3xVoet8GQHoCRHGD-k",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/submissionapi/2/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"submissionapi",
+						"2",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Grade",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMzODc5LCJpYXQiOjE3NTQzMzI2NzksImp0aSI6IjM3OGZhYTdkOWZjMjQyYmRiNTAyYjM5Y2Y3ZDQ5NTEwIiwidXNlcl9pZCI6IjIifQ.l8mgQfZeEJLs36lD8ly0k63lUugVmmSykJ2y4zWiSgg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "assingment",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "graded_to",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "grades",
+							"value": "60",
+							"type": "text"
+						}
+					],
+					"options": {
+						"formdata": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/gradeapi/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"gradeapi",
+						""
+					]
+				},
+				"description": "endpoint will create you a grade just login as teacher  \n\ncurl --location '[http://127.0.0.1:8000/gradeapi/'](http://127.0.0.1:8000/gradeapi/')  \n\\--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMzODc5LCJpYXQiOjE3NTQzMzI2NzksImp0aSI6IjM3OGZhYTdkOWZjMjQyYmRiNTAyYjM5Y2Y3ZDQ5NTEwIiwidXNlcl9pZCI6IjIifQ.l8mgQfZeEJLs36lD8ly0k63lUugVmmSykJ2y4zWiSgg'  \n\\--form 'assingment=\"1\"'  \n\\--form 'graded_to=\"1\"'  \n\\--form 'grades=\"60\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "View Grade",
+			"request": {
+				"auth": {
+					"type": "inherit"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/view-grade/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"view-grade",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Grade",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMzODc5LCJpYXQiOjE3NTQzMzI2NzksImp0aSI6IjM3OGZhYTdkOWZjMjQyYmRiNTAyYjM5Y2Y3ZDQ5NTEwIiwidXNlcl9pZCI6IjIifQ.l8mgQfZeEJLs36lD8ly0k63lUugVmmSykJ2y4zWiSgg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "grades",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "assingment",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "graded_to",
+							"value": "1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/gradeapi/1/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"gradeapi",
+						"1",
+						""
+					]
+				},
+				"description": "endpoint will update grades form 60 to 100  \njust logged in as teacher  \n  \ncurl --location --request PUT '[http://127.0.0.1:8000/gradeapi/1/'](http://127.0.0.1:8000/gradeapi/1/')  \n\\--header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMzODc5LCJpYXQiOjE3NTQzMzI2NzksImp0aSI6IjM3OGZhYTdkOWZjMjQyYmRiNTAyYjM5Y2Y3ZDQ5NTEwIiwidXNlcl9pZCI6IjIifQ.l8mgQfZeEJLs36lD8ly0k63lUugVmmSykJ2y4zWiSgg'  \n\\--form 'grades=\"100\"'  \n\\--form 'assingment=\"1\"'  \n\\--form 'graded_to=\"1\"'"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Grade",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMzODc5LCJpYXQiOjE3NTQzMzI2NzksImp0aSI6IjM3OGZhYTdkOWZjMjQyYmRiNTAyYjM5Y2Y3ZDQ5NTEwIiwidXNlcl9pZCI6IjIifQ.l8mgQfZeEJLs36lD8ly0k63lUugVmmSykJ2y4zWiSgg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/gradeapi/3/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"gradeapi",
+						"3",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
