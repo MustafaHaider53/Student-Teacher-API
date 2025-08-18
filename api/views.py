@@ -61,6 +61,8 @@ class ListAssingmentView(ListAPIView):
     serializer_class = AssingmentSerializer
     permission_classes = [IsStudent]
 
+    # queryset = Assingment.objects.filter(assigned_to = request.user)
+
     throttle_classes = [UserRateThrottle]
 
     def get_queryset(self):
@@ -115,9 +117,3 @@ class ProfileView(RetrieveAPIView):
     
     def get_object(self):
         return self.request.user
-
-
-    
-    
-
-
