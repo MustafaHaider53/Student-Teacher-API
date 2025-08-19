@@ -3,10 +3,10 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 # Create User Manager
 class UserManager(BaseUserManager):
-    def create_user(self, email, role ,name ,  password=None):
+    def create_user(self, email, role=None, name=None, password=None):
         """
-        Creates and saves a User with the given email, date of
-        birth and password.
+        Creates and saves a regular User.
+        Both role and name are optional.
         """
         if not email:
             raise ValueError("Users must have an email address")
@@ -15,19 +15,24 @@ class UserManager(BaseUserManager):
             email=self.normalize_email(email),
             role=role,
             name=name,
-            
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, role , password=None):
+    def create_superuser(self, email, password=None, **extra_fields):
+        """
+        Creates and saves a superuser with the given email and password.
+        """
+        extra_fields.setdefault('name', 'Admin')  # Set default name for superuser
+        extra_fields.setdefault('is_admin', True)
         
         user = self.create_user(
             email,
             password=password,
-            role = role,
+            role=None,  # No role for superusers
+            name=extra_fields['name'],
         )
         user.is_admin = True
         user.save(using=self._db)
@@ -36,16 +41,21 @@ class UserManager(BaseUserManager):
 # Create your models here.
 class User(AbstractBaseUser):
     ROLE_CHOICES = (
-        ('teacher' , 'Teacher'),
-        ('student' , 'Student')
+        ('teacher', 'Teacher'),
+        ('student', 'Student'),
     )
     email = models.EmailField(
         verbose_name="Email",
         max_length=255,
         unique=True,
     )
-    name = models.CharField(max_length=50)
-    role = models.CharField(max_length=15 , choices=ROLE_CHOICES)
+    name = models.CharField(max_length=50, default='Admin')  # Set default name
+    role = models.CharField(
+        max_length=15, 
+        choices=ROLE_CHOICES,
+        blank=True,
+        null=True
+    )
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -53,7 +63,7 @@ class User(AbstractBaseUser):
     objects = UserManager()
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ['password' , 'role']
+    REQUIRED_FIELDS = []  # No required fields for superuser creation
 
     def __str__(self):
         return self.email
