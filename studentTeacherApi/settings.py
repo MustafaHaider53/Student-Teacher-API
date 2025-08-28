@@ -12,6 +12,12 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+from environ import Env
+
+env = Env()
+Env.read_env()
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ff)=$q=bayh04zlz#!@h-j55491#%seg$1_#*zhur+^nc7%omq'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = env.bool('DEBUG', default=False)
 
-ALLOWED_HOSTS = ['web-production-a5c91.up.railway.app']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -77,14 +83,15 @@ WSGI_APPLICATION = 'studentTeacherApi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'restapi_db',  # Name of your PostgreSQL database
-        'USER': 'mustafa',  # PostgreSQL user
-        'PASSWORD': 'Szabist@53', # PostgreSQL user's password
-        'HOST': 'localhost',  # Or the IP/hostname of your PostgreSQL server
-        'PORT': '5432',  # Default PostgreSQL port        
+        'ENGINE': env('DB_ENGINE'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
     }
 }
 
@@ -150,8 +157,8 @@ REST_FRAMEWORK = {
     ],
 
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '100/day',
-        'user': '1500/day'
+        'anon': env('THROTTLE_ANON_RATE'),
+        'user': env('THROTTLE_USER_RATE')
     }
 
 }
@@ -159,13 +166,10 @@ REST_FRAMEWORK = {
 
 from datetime import timedelta
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=20),
-    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=env.int('JWT_ACCESS_TOKEN_LIFETIME_MINUTES')),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=env.int('JWT_REFRESH_TOKEN_LIFETIME_DAYS',)),
 }
 
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    'https://student-teacher-api-react-app.vercel.app',
-]
+# CORS settings
+CORS_ALLOWED_ORIGINS = env.list('CORS_ALLOWED_ORIGINS')
