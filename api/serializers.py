@@ -8,15 +8,16 @@ from api.models import User , Assingment , Submission , Grade
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model= User
-        fields = ['id' , 'name' , 'email' ,'password' , 'role']
+        fields = ['id' , 'name' , 'email' ,'password' , 'role' , 'profile_photo']
 
 class RegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id' , 'name' , 'email' ,'password' , 'role']
+        fields = ['id' , 'name' , 'email' ,'password' , 'role' , 'profile_photo']
 
     def create(self, validated_data):
         return User.objects.create_user(**validated_data)
+    
 
 
 class LoginSerializer(serializers.ModelSerializer):
@@ -27,8 +28,6 @@ class LoginSerializer(serializers.ModelSerializer):
 
 
 class AssingmentSerializer(serializers.ModelSerializer):
-    # created_by = serializers.StringRelatedField()  # Shows teacher's username
-    # assigned_to = serializers.StringRelatedField()  # Shows student's username
 
     class Meta:
         model = Assingment

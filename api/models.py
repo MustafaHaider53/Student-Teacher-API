@@ -3,7 +3,7 @@ from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
 
 # Create User Manager
 class UserManager(BaseUserManager):
-    def create_user(self, email, role=None, name=None, password=None):
+    def create_user(self, email, role=None, name=None, profile_photo=None ,  password=None ):
         """
         Creates and saves a regular User.
         Both role and name are optional.
@@ -15,6 +15,7 @@ class UserManager(BaseUserManager):
             email=self.normalize_email(email),
             role=role,
             name=name,
+            profile_photo = profile_photo
         )
 
         user.set_password(password)
@@ -56,6 +57,7 @@ class User(AbstractBaseUser):
         blank=True,
         null=True
     )
+    profile_photo = models.ImageField(upload_to='profile_photo' , default=None)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
