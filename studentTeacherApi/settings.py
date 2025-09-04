@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',
     'django_celery_results',
+    'silk'
 ]
 
 MIDDLEWARE = [
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'studentTeacherApi.urls'
@@ -73,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -190,3 +193,12 @@ CELERY_TIMEZONE = env('CELERY_TIMEZONE')
 CELERY_RESULT_BACKEND = env('CELERY_RESULT_BACKEND')
 CELERY_RESULT_EXTENDED = env('CELERY_RESULT_EXTENDED')
 
+SILKY_AUTHENTICATION = env('SILKY_AUTHENTICATION')
+SILKY_AUTHORISATION = env('SILKY_AUTHORISATION')
+SILKY_PERMISSIONS=lambda user: user.is_admin
+SILKY_META = env('SILKY_META')
+LOGIN_URL = env('LOGIN_URL')
+SILKY_IGNORE_PATHS = env('SILKY_IGNORE_PATHS')
+SILKY_INTERCEPT_FUNC=lambda request:not(request.path.startswith('/admin') or
+                                        request.path.startswith('/static')
+)
