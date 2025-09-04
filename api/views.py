@@ -1,8 +1,8 @@
 from api.models import User , Assingment , Submission , Grade 
 from api.serializers import RegistrationSerializer , LoginSerializer , AssingmentSerializer , SubmissionSerializer ,GradeSerializer , UserSerializer
 from rest_framework.generics import CreateAPIView , ListAPIView , RetrieveAPIView
-from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.views import APIView 
+from rest_framework.viewsets import ModelViewSet , ViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -10,6 +10,11 @@ from django.contrib.auth import authenticate
 from api.permissions import IsTeacher , IsStudent
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.throttling import UserRateThrottle
+from django.http import HttpResponse
+from rest_framework.decorators import action
+from django.core.mail import EmailMessage
+from api.tasks import generate_and_send_report_task
+
 
 
 # Create your views here.
@@ -117,3 +122,38 @@ class ProfileView(RetrieveAPIView):
     
     def get_object(self):
         return self.request.user
+
+
+class TeacherReportViewSet(ViewSet):
+    permission_classes = [IsTeacher]
+    throttle_classes = [UserRateThrottle]
+    
+    @action(detail=False, methods=['get'])
+    def generate_report(self, request):
+        task = generate_and_send_report_task.delay(request.user.id)
+        
+        return Response({
+            'status': 'processing',
+            'message': 'Report generation and email sending started',
+            'task_id': task.id,
+            'email': request.user.email
+        })
+        
+
+class StudentReportViewSet(ViewSet):
+    permission_classes = [IsStudent]
+    throttle_classes = [UserRateThrottle]
+    
+    @action(detail=False, methods=['get'])
+    def generate_report(self, request):
+        task = generate_and_send_report_task.delay(request.user.id)
+        
+        return Response({
+            'status': 'processing',
+            'message': 'Report generation and email sending started',
+            'task_id': task.id,
+            'email': request.user.email
+        })
+
+
+
