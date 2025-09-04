@@ -109,7 +109,7 @@
 						},
 						{
 							"key": "email",
-							"value": "mustafa53@gmail.com",
+							"value": "mustafahaiders53@gmail.com",
 							"type": "text"
 						},
 						{
@@ -125,15 +125,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/register/",
+					"raw": "http://54.147.155.56/register/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"147",
+						"155",
+						"56"
 					],
-					"port": "8000",
 					"path": [
 						"register",
 						""
@@ -153,7 +152,7 @@
 					"formdata": [
 						{
 							"key": "email",
-							"value": "mustafa53@gmail.com",
+							"value": "mustafahaiders53@gmail.com",
 							"type": "text"
 						},
 						{
@@ -223,7 +222,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMwNjE1LCJpYXQiOjE3NTQzMjk0MTUsImp0aSI6IjhmNTZlZGU5OGJjODRkYTZhZTVmMjFiYzY1NWM1NGFkIiwidXNlcl9pZCI6IjIifQ.FJjKuDtfg9DpZGA17na1HALnekX1NjKZtwpqx4ddsyY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NzEyMjYzLCJpYXQiOjE3NTU3MTEwNjMsImp0aSI6IjM3ODRmNzZkOTRiZjQ1MGU5OWI5MWQ4ZmQxNGIyN2M5IiwidXNlcl9pZCI6IjIifQ.0FPVsBeUoPrPsXyIY-fHwIJOANYx0VLGrJy7Sn5h18Q",
 							"type": "string"
 						}
 					]
@@ -251,15 +250,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/assingmentapi/",
+					"raw": "http://54.147.155.56/assingmentapi/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"147",
+						"155",
+						"56"
 					],
-					"port": "8000",
 					"path": [
 						"assingmentapi",
 						""
@@ -273,20 +271,26 @@
 			"name": "List-Assingment",
 			"request": {
 				"auth": {
-					"type": "inherit"
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NzEyNzI5LCJpYXQiOjE3NTU3MTE1MjksImp0aSI6IjQzODkzYWFmZTNjNTQzYzY4NTY3NzViOTQyZDY5MjE1IiwidXNlcl9pZCI6IjMifQ.7XHdOh1X8u1Hi2lg-HBbQtSdbElhn0HNyZt0y00hDHE",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/list-assingment/",
+					"raw": "http://54.147.155.56/list-assingment/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"147",
+						"155",
+						"56"
 					],
-					"port": "8000",
 					"path": [
 						"list-assingment",
 						""
@@ -303,7 +307,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzMyMzcwLCJpYXQiOjE3NTQzMzExNzAsImp0aSI6Ijc2MWYwOTk4OGRhZDQyMTU4NWZjYzA5ZGM0OTcyYzk4IiwidXNlcl9pZCI6IjIifQ.dkCRubI5Np5S_U4_jy_WSSdlD6I98omwpGFp1XlB7FU",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NzEyMjYzLCJpYXQiOjE3NTU3MTEwNjMsImp0aSI6IjM3ODRmNzZkOTRiZjQ1MGU5OWI5MWQ4ZmQxNGIyN2M5IiwidXNlcl9pZCI6IjIifQ.0FPVsBeUoPrPsXyIY-fHwIJOANYx0VLGrJy7Sn5h18Q",
 							"type": "string"
 						}
 					]
@@ -325,24 +329,23 @@
 						},
 						{
 							"key": "assigned_to",
-							"value": "1",
+							"value": "3",
 							"type": "text"
 						}
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/assingmentapi/4/",
+					"raw": "http://54.147.155.56/assingmentapi/1/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"147",
+						"155",
+						"56"
 					],
-					"port": "8000",
 					"path": [
 						"assingmentapi",
-						"4",
+						"1",
 						""
 					]
 				},
@@ -396,7 +399,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU0MzAzMTYxLCJpYXQiOjE3NTQzMDE5NjEsImp0aSI6IjEzYjFmYzkzNjM5OTQ2M2Q5YWQyYzA2NzdjM2JkMWQ1IiwidXNlcl9pZCI6IjQifQ.x5Mvtu8Dlb6SJdmiUNU35CYbkdfKvdRMV8sQRuYXyIY",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NzEyNzI5LCJpYXQiOjE3NTU3MTE1MjksImp0aSI6IjQzODkzYWFmZTNjNTQzYzY4NTY3NzViOTQyZDY5MjE1IiwidXNlcl9pZCI6IjMifQ.7XHdOh1X8u1Hi2lg-HBbQtSdbElhn0HNyZt0y00hDHE",
 							"type": "string"
 						}
 					]
@@ -419,7 +422,7 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:8000/submissionapi/",
+					"raw": "http://127.0.0.1/submissionapi/",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -427,7 +430,6 @@
 						"0",
 						"1"
 					],
-					"port": "8000",
 					"path": [
 						"submissionapi",
 						""
@@ -572,7 +574,7 @@
 						},
 						{
 							"key": "graded_to",
-							"value": "1",
+							"value": "3",
 							"type": "text"
 						},
 						{
@@ -610,20 +612,26 @@
 			"name": "View Grade",
 			"request": {
 				"auth": {
-					"type": "inherit"
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NzEyNzI5LCJpYXQiOjE3NTU3MTE1MjksImp0aSI6IjQzODkzYWFmZTNjNTQzYzY4NTY3NzViOTQyZDY5MjE1IiwidXNlcl9pZCI6IjMifQ.7XHdOh1X8u1Hi2lg-HBbQtSdbElhn0HNyZt0y00hDHE",
+							"type": "string"
+						}
+					]
 				},
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:8000/view-grade/",
+					"raw": "http://54.147.155.56/view-grade/",
 					"protocol": "http",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"54",
+						"147",
+						"155",
+						"56"
 					],
-					"port": "8000",
 					"path": [
 						"view-grade",
 						""
@@ -720,6 +728,84 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create Teacher Pdf",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2OTY2Nzg0LCJpYXQiOjE3NTY5NjU1ODQsImp0aSI6IjZhNDAyMzQ2ZmUwYzQ1ZjdiNDRmMmU4Mjk3YzAyMGMwIiwidXNlcl9pZCI6IjIifQ.u2dUQ-7psk1s1SfY602BWitnnvND8Sf_jZImKqNcXmU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/teacher-report/generate_report/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"teacher-report",
+						"generate_report",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Student Pdf",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2ODgxMzM5LCJpYXQiOjE3NTY4ODAxMzksImp0aSI6IjZmNjBlN2I3YmIwMDQzNjg4YTUzYzFmNGQ3NjBkOWU3IiwidXNlcl9pZCI6IjMifQ.xBWvme4JfKvw4QPloDW9aQPddFkDh18diYyqof1Sq6M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/student-report/generate_report/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"student-report",
+						"generate_report",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"variable": [
+		{
+			"key": "teacher_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2Nzk4NDYzLCJpYXQiOjE3NTY3OTcyNjMsImp0aSI6IjFiOWM5NDBkMDI4YTQ1YjVhNTk2NTYyYjk0OTc1NmFmIiwidXNlcl9pZCI6IjIifQ.pwerv5eUHyuzio5bVIPVhBX-IbVXevUbUAzvgiko5-Y",
+			"type": "string"
 		}
 	]
 }
