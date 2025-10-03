@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from api.models import User , Assingment , Submission , Grade 
 from api.serializers import RegistrationSerializer , LoginSerializer , AssingmentSerializer , SubmissionSerializer ,GradeSerializer , UserSerializer
 from rest_framework.generics import CreateAPIView , ListAPIView , RetrieveAPIView
@@ -18,6 +19,12 @@ from api.tasks import generate_and_send_report_task
 
 
 # Create your views here.
+
+def chat(request):
+    return render(request, "chat/chat.html")
+
+def room(request, room_name):
+    return render(request, "chat/room.html", {"room_name": room_name})
 
 class UserRegister(CreateAPIView):
     queryset = User.objects.all()
@@ -160,6 +167,5 @@ class StudentReportViewSet(ViewSet):
             'task_id': task.id,
             'email': request.user.email
         })
-
 
 

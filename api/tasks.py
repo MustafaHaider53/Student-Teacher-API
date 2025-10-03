@@ -1,13 +1,12 @@
-from celery import shared_task
+from celery import shared_task, chain
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 from django.contrib.auth import get_user_model
-from django.conf import settings
 from .models import Assingment
 from .utils import generate_student_pdf  # Your PDF generation function
 
 
-@shared_task
+@shared_task(queue="high_priority")
 def generate_student_report_task(user_id):
     User = get_user_model()
     
@@ -26,8 +25,10 @@ def generate_student_report_task(user_id):
     except Exception as e:
         raise e
 
-@shared_task
-def send_student_report_email_task(user_id, pdf_content):
+
+# 🔥 CHANGED argument order: pdf_content comes first, user_id second
+@shared_task(queue="low_priority")
+def send_student_report_email_task(pdf_content, user_id):
     User = get_user_model()
     
     try:
@@ -52,16 +53,12 @@ def send_student_report_email_task(user_id, pdf_content):
     except Exception as e:
         raise e
 
+
 @shared_task
 def generate_and_send_report_task(user_id):
-    """Combined task that generates report and sends email"""
-    try:
-            # Generate the report
-        pdf_content = generate_student_report_task(user_id)
-            
-            # Send the email with the report
-        result = send_student_report_email_task(user_id, pdf_content)
-        
-        return result
-    except Exception as e:
-        raise e
+    workflow = chain(
+        generate_student_report_task.s(user_id).set(queue="high_priority"),
+        # 🔥 pass user_id explicitly as second arg
+        send_student_report_email_task.s(user_id).set(queue="low_priority")
+    )
+    return workflow.apply_async()

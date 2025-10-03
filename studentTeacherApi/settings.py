@@ -37,6 +37,7 @@ ALLOWED_HOSTS = env.list('ALLOWED_HOSTS',default=['http://127.0.0.1:8000'])
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,8 +82,16 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'studentTeacherApi.wsgi.application'
-
+# WSGI_APPLICATION = 'studentTeacherApi.wsgi.application'
+ASGI_APPLICATION = 'studentTeacherApi.asgi.application'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
@@ -143,11 +152,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
 import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -202,3 +212,14 @@ SILKY_IGNORE_PATHS = env('SILKY_IGNORE_PATHS')
 SILKY_INTERCEPT_FUNC=lambda request:not(request.path.startswith('/admin') or
                                         request.path.startswith('/static')
 )
+
+
+from kombu import Queue
+
+CELERY_TASK_QUEUES = (
+    Queue("default"),
+    Queue("high_priority"),
+    Queue("low_priority"),
+)
+
+CELERY_TASK_DEFAULT_QUEUE = "default"
